@@ -1,0 +1,94 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+{% endblock %}
+
+<!--Displays the details of a single post, including title, content, category, author, and publish date. Includes edit 
+and delete options for the post author.-->
+<!--Displays comments related to the post and includes a form for adding comments.-->
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h3 class="card-title">{{ post.title }}</h3>
+                    <p class="card-text">{{ post.content|safe }}</p>
+                    <p><strong>Category:</strong> {{ post.get_category_display }}</p>
+                    <p><strong>Tags:</strong> {% for tag in post.tags.all %} <a href="{% url 'post_list_by_tag' tag.slug %}"><span class="badge bg-dark">{{ tag.name }}</span></a> {% endfor %}</p>
+                    <p><strong>Author:</strong> {{ post.author }}</p>
+                    <p><strong>Published on:</strong> {{ post.created_at }}</p>
+                    
+                    <a href="{% url 'like_post' slug=post.slug %}" class="btn btn-primary">
+                        {% if user in post.likes.all %}
+                            Unlike
+                        {% else %}
+                            Like
+                        {% endif %}
+                        ({{ post.likes.count }})
+                    </a>
+
+                    {% if user == post.author %}
+                        <a href="{% url 'post_edit' slug=post.slug %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'post_confirm_delete' slug=post.slug %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+
+                    <a href="{% url 'post_share' post.id %}" class="btn btn-info">Share via Email</a>
+
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <div class="card-body">
+                    <h3>Comments</h3>
+                    <hr>
+                    {% for comment in comments %}
+                        <div class="mb-2">
+                            <p>{{ comment.content }}</p>
+                            <p><small>By {{ comment.author }} on {{ comment.created_at }}</small></p>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if user.is_authenticated %}
+                <div class="card my-4">
+                    <div class="card-body">
+                        <h3>Leave a comment</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ comment_form|crispy }}
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <p>You must be logged in to leave a comment, <a href="{% url 'login' %}">Login here</a>.</p>
+            {% endif %}
+            <div class="card my-4">
+                <div class="card-body">
+                    <h3>Similar Posts</h3>
+                    <hr>
+                    {% for similar_post in similar_posts %}
+                        <div class="mb-2">
+                            <h3><a href="{{ similar_post.get_absolute_url }}">{{ similar_post.title }}</a></h3>
+                            <p class="card-text">{{ similar_post.content|truncatewords:30|safe }}</p>
+                            <p><strong>Category:</strong> {{ similar_post.category }}</p>
+                            <p><strong>Tags:</strong> {% for tag in similar_post.tags.all %} <a href="{% url 'post_list_by_tag' tag.slug %}"><span class="badge bg-dark">{{ tag.name }}</span></a> {% endfor %}</p>
+                            <p><strong>Author:</strong> {{ similar_post.author }}</p>
+                            <p><strong>Published on:</strong> {{ similar_post.created_at }}</p>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

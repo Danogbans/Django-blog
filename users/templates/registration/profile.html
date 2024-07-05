@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+{% endblock %}
+
+<!--Displays user profile information and allows the user to edit their bio and profile picture.-->
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="my-4 text-center">Profile</h3>
+            <div class="card my-4">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

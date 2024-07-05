@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+
+{% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+{% endblock %}
+
+
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="my-4">Search Results</h3>
+            <!--<form method="get" action="{% url 'search' %}">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>-->
+            <hr>
+            {% if query %}
+                </h3>Results for "{{ query }}":</>
+                {% for post in results %}
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <h2 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                            <p class="card-text">{{ post.content|truncatewords:30|safe }}</p>
+                            <p><strong>Category:</strong> {{ post.category }}</p>
+                            <p><strong>Tags:</strong>
+                                {% for tag in post.tags.all %}
+                                    <a href="{% url 'post_list_by_tag' tag.slug %}">
+                                        <span class="badge bg-dark">{{ tag.name }}</span>
+                                    </a>
+                                {% endfor %}
+                            </p>
+                            <p><strong>Author:</strong> {{ post.author }}</p>
+                            <p><strong>Published on:</strong> {{ post.created_at }}</p>
+                            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No results found.</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
