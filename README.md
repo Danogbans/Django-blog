@@ -136,3 +136,6 @@ python manage.py test
 ### Deployment
 
 To deploy this project, you'll need to set up a web server (e.g., Gunicorn, Nginx) and configure your database and static files for production use. Refer to the Django deployment checklist for more details.
+
+### Contributing
+Feel free to submit issues and pull requests. For major changes, please open an issue first to discuss what you would like to change.
