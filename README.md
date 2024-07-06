@@ -47,7 +47,7 @@ A full-featured blog application built with Django. This application includes us
 - Python 3.6+
 - Django 3.1+
 - PostgreSQL (for full-text search)
-- HTML5, Bootstrap
+- HTML5, Bootstrap4
 
 ### Installation
 
