@@ -131,3 +131,8 @@ Run the tests to ensure everything is working correctly:
 
 ```sh
 python manage.py test
+
+
+### Deployment
+
+To deploy this project, you'll need to set up a web server (e.g., Gunicorn, Nginx) and configure your database and static files for production use. Refer to the Django deployment checklist for more details.
