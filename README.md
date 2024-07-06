@@ -39,3 +39,95 @@ A full-featured blog application built with Django. This application includes us
 
 - **Admin Interface**:
   - Manage users and blog content from the Django admin interface.
+
+## Setup Instructions
+
+### Prerequisites
+
+- Python 3.6+
+- Django 3.1+
+- PostgreSQL (for full-text search)
+- Node.js and npm (for frontend dependencies, optional)
+
+### Installation
+
+1. **Clone the repository**:
+
+    ```sh
+    git clone https://github.com/your-username/django-pro-blog.git
+    cd django-pro-blog
+    ```
+
+2. **Create a virtual environment**:
+
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install the dependencies**:
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4. **Set up the database**:
+
+    Ensure PostgreSQL is installed and running. Create a new database:
+
+    ```sh
+    psql -U postgres
+    CREATE DATABASE django_pro_blog;
+    ```
+
+    Update `settings.py` with your database configuration.
+
+5. **Run migrations**:
+
+    ```sh
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+6. **Create a superuser**:
+
+    ```sh
+    python manage.py createsuperuser
+    ```
+
+7. **Collect static files**:
+
+    ```sh
+    python manage.py collectstatic
+    ```
+
+8. **Run the development server**:
+
+    ```sh
+    python manage.py runserver
+    ```
+
+### Usage
+
+1. **Access the admin interface**:
+
+    Navigate to `http://127.0.0.1:8000/admin` and log in with the superuser credentials.
+
+2. **Create a new post**:
+
+    Use the admin interface to create, edit, and manage blog posts.
+
+3. **Visit the blog**:
+
+    Navigate to `http://127.0.0.1:8000/blog` to view the list of blog posts.
+
+4. **Register and login**:
+
+    Register a new user account or log in with an existing account to create posts, like posts, and add comments.
+
+### Testing
+
+Run the tests to ensure everything is working correctly:
+
+```sh
+python manage.py test
