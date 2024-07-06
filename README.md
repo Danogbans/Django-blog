@@ -131,7 +131,7 @@ Run the tests to ensure everything is working correctly:
 
 ```sh
 python manage.py test
-
+```
 
 ### Deployment
 
