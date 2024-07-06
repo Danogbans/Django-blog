@@ -9,3 +9,6 @@ A full-featured blog application built with Django. This application includes us
 
 ![Blog-post-paginator image](https://github.com/Danogbans/Django-blog/blob/main/search-function.png)
 **Search functionality** 
+
+![Blog-post-paginator image]()
+**Tagging functionality** 
