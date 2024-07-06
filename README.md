@@ -5,4 +5,4 @@ A full-featured blog application built with Django. This application includes us
 ## Images
 
 ![Blog-post-paginator image](https://github.com/Danogbans/Django-blog/blob/main/blog-post-pagination.png)
-**Post list and paginator**: 
+**Post list and paginator** 
