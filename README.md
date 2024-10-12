@@ -25,7 +25,7 @@ A full-featured blog application built with Django. This application includes us
   - Rich text editor for writing posts.
   - Slug generation for SEO-friendly URLs.
   - Display posts in a paginated list.
-  - Tagging functionality to categorize pos
+  - Tagging functionality to categorize posts.
 
 - **Comments**:
   - Add comments to posts.
