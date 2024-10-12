@@ -18,7 +18,7 @@ A full-featured blog application built with Django. This application includes us
 
 - **User Authentication**: 
   - User registration, login, and logout.
-  - Secure password storage and authentication using Django's built-in authentication syste
+  - Secure password storage and authentication using Django's built-in authentication system.
   
 - **Blog Posts**:
   - Create, edit, and delete posts.
