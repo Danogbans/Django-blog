@@ -50,7 +50,7 @@ def signup_view(request):
     return render(request, 'registration/signup.html', {'form': form, 'latest_posts': latest_posts})
 
 
-# profile_view: Displays and edits the user profile. Requires user log
+# profile_view: Displays and edits the user profile. Requires user login.
 @login_required
 def profile_view(request):
     latest_posts = Post.objects.order_by('-created_at')[:4]
