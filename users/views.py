@@ -10,7 +10,7 @@ from blog.models import Post
 
 #login_view: Handles user login.
 def login_view(request):
-    latest_posts = Post.objects.order_by('-created_at')[:4
+    latest_posts = Post.objects.order_by('-created_at')[:4]
     if request.method == 'POST':
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
