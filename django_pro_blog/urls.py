@@ -8,7 +8,6 @@ from blog.sitemaps import PostSitemap
 
 
 
-
 # Adding a sitemap url
 sitemaps = {
     'posts': PostSitemap
